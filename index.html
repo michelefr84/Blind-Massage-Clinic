@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Inclusive Hands Clinic — a therapeutic massage clinic where blind and low-vision therapists work as salaried, TESDA-certified professionals. Pilot clinic in development in Cebu, Philippines.">
+<meta property="og:title" content="Inclusive Hands Clinic — Professional massage by blind therapists">
+<meta property="og:description" content="A therapeutic massage clinic staffed by blind and low-vision therapists: TESDA-certified, salaried. Pilot in development in Cebu, Philippines.">
+<title>Inclusive Hands Clinic — Professional massage by blind therapists</title>
+<script>
+/* Ripristino immediato delle preferenze di accessibilità salvate (evita il lampo di tema sbagliato) */
+try{
+  var __a=JSON.parse(localStorage.getItem("ihc-a11y")||"{}");
+  var __c=document.documentElement.classList;
+  if(__a.contrast)__c.add("a-contrast");
+  if(__a.dark)__c.add("a-dark");
+  if(__a.read)__c.add("a-read");
+  if(__a.links)__c.add("a-links");
+  if(__a.still)__c.add("a-still");
+  var __steps=["","112.5%","125%","140%"];
+  if(__a.f)document.documentElement.style.fontSize=__steps[__a.f]||"";
+}catch(e){}
+</script>
+<style>
+  :root{
+    --brand:#0E1A2B; --brand-soft:#1D2D44;
+    --bg:#FAF6F0; --surface:#FFFFFF; --surface-2:#FFF9F1;
+    --ink:#16202E; --muted:#5C5850; --line:#E5DDD1;
+    --hero-text:#F5F1EA;
+    --accent:#B05C2E; --accent-deep:#8F4A24; --accent-bright:#F2A76B;
+    --press-bg:#B05C2E; --press-fg:#FFFFFF;
+    --focus:#B05C2E;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:1.06rem; line-height:1.65; overflow-wrap:break-word;
+  }
+  ::selection{background:var(--accent); color:#fff}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+  .visually-hidden{
+    position:absolute!important; width:1px; height:1px; margin:-1px;
+    padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+  }
+  .skip-link{
+    position:absolute; left:-9999px; top:0; background:var(--brand); color:#fff;
+    padding:.6rem 1rem; z-index:20; border-radius:0 0 .4rem .4rem;
+  }
+  .skip-link:focus{left:.5rem; top:.5rem}
+
+  /* ---------- Barra di accessibilità ---------- */
+  .a11y-bar{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.45rem;
+    padding:.55rem 1.2rem; background:var(--surface); border-bottom:1px solid var(--line);
+  }
+  .a11y-title{
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin-right:.4rem;
+  }
+  .tool-btn{
+    font:inherit; font-size:.9rem; cursor:pointer;
+    padding:.28rem .6rem; border-radius:.45rem;
+    border:1px solid var(--line); background:transparent; color:var(--ink);
+  }
+  .tool-btn:hover{border-color:var(--accent)}
+  .tool-btn[aria-pressed="true"]{background:var(--press-bg); color:var(--press-fg); border-color:var(--press-bg); font-weight:700}
+
+  /* ---------- Testata ---------- */
+  header.site{
+    background:var(--brand); color:var(--hero-text);
+    padding:.9rem 1.2rem; display:flex; flex-wrap:wrap; gap:.8rem;
+    align-items:center; justify-content:space-between;
+  }
+  .brand{font-weight:700; letter-spacing:.04em; font-size:1.05rem; margin:0}
+  .brand small{display:block; font-weight:400; font-size:.72rem; opacity:.85; letter-spacing:.14em}
+  .lang-switch{display:flex; gap:.4rem}
+  .lang-btn{
+    font:inherit; cursor:pointer; padding:.25rem .8rem; border-radius:999px;
+    border:1px solid var(--accent-bright); background:transparent; color:var(--hero-text);
+  }
+  .lang-btn[aria-pressed="true"]{background:var(--accent-bright); color:var(--brand); font-weight:700}
+
+  /* ---------- Navigazione di pagina ---------- */
+  .page-nav{display:flex; flex-wrap:wrap; gap:.5rem; padding:.8rem 1.2rem; background:var(--bg)}
+  .page-nav a{
+    font-size:.9rem; text-decoration:none; color:var(--accent);
+    border:1px solid var(--line); border-radius:999px; padding:.22rem .8rem; background:var(--surface);
+  }
+  .page-nav a:hover{border-color:var(--accent)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:linear-gradient(160deg,var(--brand) 0%,var(--brand-soft) 100%);
+    color:var(--hero-text); padding:clamp(2.6rem,6vw,4.2rem) 1.2rem clamp(2.4rem,5vw,3.6rem);
+    border-top:none; position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.18) 1.6px, transparent 2.3px);
+    background-size:23px 23px;
+    -webkit-mask-image:linear-gradient(100deg,transparent 42%,#000 100%);
+    mask-image:linear-gradient(100deg,transparent 42%,#000 100%);
+  }
+  .hero .wrap{position:relative}
+  .wrap{max-width:64rem; margin:0 auto}
+  .kicker{
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--accent-bright); margin:0 0 1rem;
+  }
+  .hero h1{font-size:clamp(1.9rem,5vw,2.9rem); margin:0 0 .7rem; line-height:1.15}
+  .hero .lead{font-size:1.18rem; max-width:44rem; margin:0 0 1.7rem}
+  .cta{display:flex; flex-wrap:wrap; gap:.8rem}
+  .btn{
+    display:inline-block; padding:.72rem 1.35rem; border-radius:.5rem;
+    text-decoration:none; font-weight:700;
+  }
+  .btn-primary{background:var(--accent-bright); color:var(--brand)}
+  .btn-primary:hover{filter:brightness(1.06)}
+  .btn-ghost{border:1px solid var(--accent-bright); color:var(--hero-text)}
+
+  /* ---------- Sezioni ---------- */
+  section{padding:clamp(2.2rem,4.5vw,3rem) 1.2rem; border-top:1px solid var(--line)}
+  section h2{font-size:clamp(1.35rem,2.8vw,1.7rem); margin:0 0 .4rem}
+  section h2::after{
+    content:""; display:block; width:3rem; height:3px;
+    background:var(--accent); margin-top:.5rem; border-radius:2px;
+  }
+  section .kicker{color:var(--accent); margin:0}
+  section p{max-width:46rem; margin:.9rem 0 0}
+  .cards{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(14.5rem,1fr)); margin-top:1.4rem}
+  .card{
+    border:1px solid var(--line); border-top:3px solid var(--accent);
+    border-radius:.6rem; padding:1.15rem 1.2rem; background:var(--surface-2);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-2px); box-shadow:0 6px 18px rgba(14,26,43,.10)}
+  .card h3{margin:0 0 .5rem; font-size:1.05rem; color:var(--accent)}
+  .card p{margin:0; font-size:.97rem; max-width:none}
+  .facts{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); margin:1.5rem 0 0; padding:0; list-style:none}
+  .facts li{border-left:4px solid var(--accent); padding-left:.9rem; font-size:.97rem}
+  .facts strong{display:block; font-size:1.55rem; color:var(--accent); line-height:1.2}
+  section h3{margin:1.6rem 0 0; font-size:1.12rem; color:var(--accent)}
+  section ul:not(.facts), section ol{max-width:46rem; margin:.8rem 0 0; padding-left:1.4rem}
+  section ul:not(.facts) li, section ol li{margin:.45rem 0}
+  .note{font-size:.9rem; color:var(--muted)}
+  a{color:var(--accent)}
+  footer.site{background:var(--brand); color:var(--hero-text); padding:1.7rem 1.2rem; font-size:.9rem}
+  footer.site a{color:var(--accent-bright)}
+  footer.site .footer-cols{display:flex; flex-wrap:wrap; gap:.6rem 2rem; justify-content:space-between; align-items:baseline}
+  footer.site p{margin:0}
+
+  @media (max-width:600px){
+    .a11y-bar,.page-nav{padding:.55rem .9rem}
+    header.site{padding:.85rem .9rem}
+    section{padding:2.1rem .9rem}
+  }
+
+  /* ---------- Preferenze di accessibilità ---------- */
+  html.a-still{scroll-behavior:auto}
+  html.a-still *{animation:none!important; transition:none!important}
+  html.a-links a{text-decoration:underline!important}
+  html.a-read body{
+    font-family:Verdana,Tahoma,"Segoe UI",Arial,sans-serif;
+    letter-spacing:.03em; word-spacing:.14em; line-height:1.9;
+  }
+  html.a-dark{
+    --brand:#0B111A; --brand-soft:#16222F;
+    --bg:#101720; --surface:#182231; --surface-2:#1C2938;
+    --ink:#F1ECE3; --muted:#BFB8AC; --line:#2B3A4E;
+    --hero-text:#F5F1EA;
+    --accent:#F2A76B; --accent-deep:#F6BC8E; --accent-bright:#F2A76B;
+    --press-bg:#F2A76B; --press-fg:#0B111A;
+    --focus:#F2A76B;
+  }
+  html.a-contrast body{background:#000; color:#fff}
+  html.a-contrast{
+    --bg:#000; --surface:#000; --surface-2:#000;
+    --ink:#fff; --muted:#fff; --line:#fff;
+    --brand:#000; --brand-soft:#000;
+    --accent:#FFD84D; --accent-deep:#FFD84D; --accent-bright:#FFD84D;
+    --press-bg:#FFD84D; --press-fg:#000;
+    --focus:#FFD84D;
+  }
+  html.a-contrast .hero{background:#000}
+  html.a-contrast .hero::before{display:none}
+  html.a-contrast header.site,html.a-contrast footer.site{background:#000; border-top:1px solid #fff}
+  html.a-contrast .card{border:2px solid #fff; border-top:3px solid #FFD84D}
+  html.a-contrast .btn-primary{background:#FFD84D; color:#000}
+  html.a-contrast .btn-ghost{border:2px solid #fff; color:#fff}
+  html.a-contrast section{border-color:#fff}
+  html.a-contrast .tool-btn{border-color:#fff}
+  html.a-contrast .lang-btn{border-color:#fff; color:#fff}
+  html.a-contrast .lang-btn[aria-pressed="true"]{background:#FFD84D; color:#000}
+</style>
+</head>
+<body>
+<a class="skip-link" id="skip-link" href="#main-en">Skip to main content</a>
+
+<header class="site">
+  <p class="brand">INCLUSIVE HANDS CLINIC<small>INCLUSIVE EMPLOYMENT IN ALLIED HEALTH</small></p>
+  <div class="lang-switch" role="group" aria-label="Language / Lingua">
+    <button type="button" class="lang-btn" data-lang="en" aria-pressed="true" aria-label="Switch to English">EN</button>
+    <button type="button" class="lang-btn" data-lang="it" aria-pressed="false" aria-label="Cambia lingua in italiano">IT</button>
+  </div>
+</header>
+
+<nav class="a11y-bar" id="a11y-bar" role="group" aria-label="Accessibility tools">
+  <span class="a11y-title" id="a11y-title">Accessibility</span>
+  <button type="button" class="tool-btn" data-tool="bigger" aria-label="Increase text size">A+</button>
+  <button type="button" class="tool-btn" data-tool="smaller" aria-label="Decrease text size">A&#8722;</button>
+  <button type="button" class="tool-btn" data-tool="contrast" aria-pressed="false" aria-label="High contrast">Contrast</button>
+  <button type="button" class="tool-btn" data-tool="dark" aria-pressed="false" aria-label="Dark mode">Dark</button>
+  <button type="button" class="tool-btn" data-tool="read" aria-pressed="false" aria-label="Readable font">Font</button>
+  <button type="button" class="tool-btn" data-tool="links" aria-pressed="false" aria-label="Underline links">Links</button>
+  <button type="button" class="tool-btn" data-tool="still" aria-pressed="false" aria-label="Reduce motion and animations">Motion</button>
+  <button type="button" class="tool-btn" data-tool="reset" aria-label="Reset all accessibility settings">Reset</button>
+  <p class="visually-hidden" id="a11y-status" role="status" aria-live="polite"></p>
+</nav>
+
+<div id="content-en" lang="en">
+  <main id="main-en">
+    <nav class="page-nav" aria-label="On this page">
+      <a href="#en-model">The model</a>
+      <a href="#en-pilot">The pilot</a>
+      <a href="#en-engagement">Government correspondence</a>
+      <a href="#en-contact">Investors</a>
+      <a href="#en-access">Accessibility</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="en-hero-title">
+      <div class="wrap">
+        <p class="kicker">Social enterprise — pilot clinic in development</p>
+        <h1 id="en-hero-title">Professional massage. Delivered by blind therapists.</h1>
+        <p class="lead">Inclusive Hands Clinic is a therapeutic massage clinic where blind and low&#8209;vision therapists work as salaried, nationally certified professionals. This is a social enterprise, not a charity: a quality clinic first, built to pay its way &mdash; and a workplace that proves inclusive employment works.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:michelefrosi84@gmail.com?subject=Inclusive%20Hands%20Clinic%20—%20partner%20or%20investor">Partner or invest</a>
+          <a class="btn btn-ghost" href="#en-model">How the model works</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="en-founder" aria-labelledby="en-story">
+      <div class="wrap">
+        <p class="kicker">Who we are</p>
+        <h2 id="en-story">A founder who lives the model</h2>
+        <p>Inclusive Hands Clinic is founded by Michele Frosi, a totally blind Italian entrepreneur. The clinic concept is informed by his lived experience: what a professional workplace must look like — tactile wayfinding, screen&#8209;reader&#8209;based tools, spoken procedures — so that blindness stops being a barrier and becomes the professional identity of the service.</p>
+        <p>The project builds on a consolidated Asian industry precedent: massage practised by blind therapists as a recognized category of quality, from the tea houses of Hanoi to established clinics across Southeast Asia. The clinic&rsquo;s contribution is to run it with the standards of a modern service business: national certification, salaried contracts, documented quality protocols.</p>
+      </div>
+    </section>
+
+    <section id="en-model" aria-labelledby="en-model-title">
+      <div class="wrap">
+        <p class="kicker">The service</p>
+        <h2 id="en-model-title">The model</h2>
+        <div class="cards">
+          <div class="card"><h3>Certified therapists</h3><p>Every therapist completes the national TESDA Massage Therapy NC II certification (about 700 hours) plus the clinic&rsquo;s internal assessment protocol before treating a client.</p></div>
+          <div class="card"><h3>Real jobs</h3><p>Salaried positions above the regional minimum wage, stable contracts with full social contributions, and a career path: therapist, senior therapist, shift coordinator, academy trainer.</p></div>
+          <div class="card"><h3>An accessible academy</h3><p>An internal training pipeline produces new therapists, with accessible materials: braille, audio and screen&#8209;reader&#8209;friendly digital formats.</p></div>
+          <div class="card"><h3>A replicable playbook</h3><p>Every process is documented so a new clinic executes rather than reinvents. The playbook is designed to replicate the model in other countries, adapting it to each nation&rsquo;s certification system and regulations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="en-pilot" aria-labelledby="en-pilot-title">
+      <div class="wrap">
+        <p class="kicker">The plan</p>
+        <h2 id="en-pilot-title">The pilot: Cebu City, Philippines</h2>
+        <p>The first clinic is planned for Cebu City, one of the country&rsquo;s leading urban markets, subject to funding, local partnerships and regulatory requirements. The intended client base is diversified: tourists, professionals, corporate chair&#8209;massage contracts, and clients with visual disabilities and their families — served with dedicated hours and trained staff.</p>
+        <ul class="facts">
+          <li><strong>6&ndash;14</strong> blind and low&#8209;vision therapists employed over the first five years</li>
+          <li><strong>Month 6</strong> break&#8209;even target in the base scenario</li>
+          <li><strong>100%</strong> salaried, certified therapists from day one</li>
+        </ul>
+        <h3>Roadmap to opening</h3>
+        <ol>
+          <li>Complete the EUR 50,000 blended raise (impact investment, grants, pre&#8209;sales).</li>
+          <li>Sign a local operating partner based in Cebu.</li>
+          <li>Confirm regulatory requirements, secure the premises and start the TESDA training pipeline for the first therapists.</li>
+          <li>Open the pilot clinic and serve the first client base.</li>
+          <li>Reach the month&#8209;6 break&#8209;even target in the base scenario, then evaluate replication in other countries.</li>
+        </ol>
+        <p class="note">The full market analysis, financial model and risk matrix are documented in the business plan, available on request.</p>
+      </div>
+    </section>
+
+    <section id="en-engagement" aria-labelledby="en-engagement-title">
+      <div class="wrap">
+        <p class="kicker">Government correspondence</p>
+        <h2 id="en-engagement-title">Government correspondence and guidance</h2>
+        <p>In April&ndash;May 2026 the project received official written replies from two Queensland Government (Australia) departments: Queensland Health, Health Workforce Division (File Ref C&#8209;ECTF&#8209;26/6158), and the Department of Families, Seniors, Disability Services and Child Safety (MIN ID 26&#8209;01219 DFSDSCS 02669&#8209;2026).</p>
+        <p>The letters acknowledge the intent of the initiative, commend its inclusive&#8209;employment purpose, and point to accredited training providers, disability sector organisations and grant channels. To be precise: they are official correspondence and guidance — not endorsements, nominations or funding commitments. The originals are available on request.</p>
+      </div>
+    </section>
+
+    <section id="en-contact" aria-labelledby="en-contact-title">
+      <div class="wrap">
+        <p class="kicker">Get involved</p>
+        <h2 id="en-contact-title">For investors and partners</h2>
+        <p>We are seeking to raise EUR 50,000 through a combination of impact investment, grants and pre&#8209;sales. In parallel, we are looking for an operating partner based in Cebu and early impact investors.</p>
+        <h3>Why partner with us</h3>
+        <ul>
+          <li><strong>A clear social mission.</strong> Skilled employment, professional independence and career development for blind and low&#8209;vision practitioners.</li>
+          <li><strong>A professional service model.</strong> National certification, client safety and documented quality procedures, not improvisation.</li>
+          <li><strong>A local partnership opportunity.</strong> Work with us to validate demand, regulatory requirements and the pilot clinic in Cebu.</li>
+          <li><strong>A model with international potential.</strong> If the pilot succeeds, the documented playbook opens the way to replication in other countries &mdash; potentially including Australia.</li>
+        </ul>
+        <h3>Who we are looking for</h3>
+        <ul>
+          <li>Local operating partners and entrepreneurs based in Cebu</li>
+          <li>Disability inclusion organisations</li>
+          <li>Qualified massage and wellness professionals</li>
+          <li>Impact investors and grant&#8209;making organisations</li>
+        </ul>
+        <p>Write to <a href="mailto:michelefrosi84@gmail.com">michelefrosi84@gmail.com</a> to receive the business plan, the financial model or the official correspondence.</p>
+      </div>
+    </section>
+
+    <section id="en-access" aria-labelledby="en-access-title">
+      <div class="wrap">
+        <p class="kicker">Our standard</p>
+        <h2 id="en-access-title">Accessibility statement</h2>
+        <p>The toolbar at the top of this page puts the controls in your hands: enlarge or reduce the text, switch on high contrast or dark mode, apply a more readable font, underline every link and stop animations. Your choices are saved in your browser and restored on your next visit.</p>
+        <p>The website itself is built to be fully usable with screen readers and keyboard only: semantic HTML landmarks, a logical heading order, visible focus indicators, high colour contrast, resizable text and no auto&#8209;playing media. Accessibility is not a feature of this project — it is the standard the whole service is built on.</p>
+        <p>If anything on this page is not accessible to you, write to us and we will fix it.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap footer-cols">
+      <p>&copy; 2026 Inclusive Hands Clinic — pilot clinic in development, Cebu (Philippines). Last updated: November 2026.</p>
+      <p>Contact: <a href="mailto:michelefrosi84@gmail.com">michelefrosi84@gmail.com</a></p>
+    </div>
+  </footer>
+</div>
+
+<div id="content-it" lang="it" hidden>
+  <main id="main-it">
+    <nav class="page-nav" aria-label="In questa pagina">
+      <a href="#it-model">Il modello</a>
+      <a href="#it-pilot">Il pilota</a>
+      <a href="#it-engagement">Corrispondenza</a>
+      <a href="#it-contact">Investitori</a>
+      <a href="#it-access">Accessibilità</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="it-hero-title">
+      <div class="wrap">
+        <p class="kicker">Social enterprise — clinica pilota in sviluppo</p>
+        <h1 id="it-hero-title">Massaggio professionale. Erogato da terapisti non vedenti.</h1>
+        <p class="lead">Inclusive Hands Clinic è una clinica di massaggio terapeutico in cui i terapisti non vedenti e ipovedenti lavorano come dipendenti retribuiti e certificati a livello nazionale. Non è un progetto benefico: è un&rsquo;impresa sociale — prima di tutto una clinica di qualità, costruita per reggersi con le proprie forze, e un luogo di lavoro che dimostra che l&rsquo;impiego inclusivo funziona.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:michelefrosi84@gmail.com?subject=Inclusive%20Hands%20Clinic%20—%20partner%20o%20investitore">Diventa partner o investitore</a>
+          <a class="btn btn-ghost" href="#it-model">Come funziona il modello</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="it-founder" aria-labelledby="it-story">
+      <div class="wrap">
+        <p class="kicker">Chi siamo</p>
+        <h2 id="it-story">Un fondatore che vive il modello</h2>
+        <p>Inclusive Hands Clinic è fondata da Michele Frosi, imprenditore italiano totalmente cieco. Il concetto di clinica nasce dalla sua esperienza diretta: come deve essere un ambiente professionale — percorsi tattili, strumenti con screen reader, procedure vocali — perché la cecità smetta di essere una barriera e diventi l&rsquo;identità professionale del servizio.</p>
+        <p>Il progetto si innesta su un precedente industriale consolidato in Asia: il massaggio praticato da terapisti non vedenti come categoria di qualità riconosciuta, dalle case da tè di Hanoi alle cliniche del Sud&#8209;Est Asiatico. Il contributo della clinica è condurlo con gli standard di un&rsquo;impresa di servizi moderna: certificazione nazionale, contratti stabili, protocolli di qualità documentati.</p>
+      </div>
+    </section>
+
+    <section id="it-model" aria-labelledby="it-model-title">
+      <div class="wrap">
+        <p class="kicker">Il servizio</p>
+        <h2 id="it-model-title">Il modello</h2>
+        <div class="cards">
+          <div class="card"><h3>Terapisti certificati</h3><p>Ogni terapista completa la certificazione nazionale TESDA Massage Therapy NC II (circa 700 ore) più il protocollo interno di valutazione della clinica, prima di trattare un cliente.</p></div>
+          <div class="card"><h3>Lavoro vero</h3><p>Assunzione a tempo indeterminato con retribuzione sopra il minimo regionale, contributi completi e un percorso di carriera: terapista, terapista senior, coordinatore di turno, formatore.</p></div>
+          <div class="card"><h3>Un&rsquo;accademia accessibile</h3><p>Una pipeline formativa interna produce nuovi operatori, con materiali accessibili: braille, audio e formati digitali compatibili con gli screen reader.</p></div>
+          <div class="card"><h3>Un playbook replicabile</h3><p>Ogni processo è documentato perché una nuova clinica esegua, non reinventi. Il playbook è pensato per replicare il modello in altri paesi, adattandolo al sistema di certificazione e ai regolamenti di ciascuna nazione.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="it-pilot" aria-labelledby="it-pilot-title">
+      <div class="wrap">
+        <p class="kicker">Il piano</p>
+        <h2 id="it-pilot-title">Il pilota: Cebu City, Filippine</h2>
+        <p>La prima clinica è prevista a Cebu City, uno dei principali mercati urbani del paese, al variare di finanziamenti, partnership locali e requisiti normativi. La clientela prevista è diversificata: turisti, professionisti, contratti corporate di chair massage e clienti con disabilità visive e le loro famiglie — accolti con orari dedicati e personale formato.</p>
+        <ul class="facts">
+          <li><strong>6&ndash;14</strong> terapisti non vedenti e ipovedenti impiegati nei primi cinque anni</li>
+          <li><strong>Mese 6</strong> obiettivo di pareggio nello scenario base</li>
+          <li><strong>100%</strong> terapisti retribuiti e certificati dal primo giorno</li>
+        </ul>
+        <h3>Il percorso verso l&rsquo;apertura</h3>
+        <ol>
+          <li>Completare la raccolta mista di EUR 50.000 (investimenti a impatto, grant, pre&#8209;vendite).</li>
+          <li>Firmare con un socio operativo con base a Cebu.</li>
+          <li>Confermare i requisiti normativi, assicurare il locale e avviare la pipeline formativa TESDA per i primi terapisti.</li>
+          <li>Aprire la clinica pilota e servire la prima clientela.</li>
+          <li>Raggiungere l&rsquo;obiettivo di pareggio al mese 6 nello scenario base, poi valutare la replicazione in altri paesi.</li>
+        </ol>
+        <p class="note">L&rsquo;analisi di mercato completa, il modello finanziario e la matrice dei rischi sono documentati nel business plan, disponibile su richiesta.</p>
+      </div>
+    </section>
+
+    <section id="it-engagement" aria-labelledby="it-engagement-title">
+      <div class="wrap">
+        <p class="kicker">Corrispondenza governativa</p>
+        <h2 id="it-engagement-title">Corrispondenza governativa e indicazioni</h2>
+        <p>Nel periodo aprile&#8209;maggio 2026 il progetto ha ricevuto risposte scritte ufficiali da due dicasteri del Governo del Queensland (Australia): Queensland Health, Health Workforce Division (File Ref C&#8209;ECTF&#8209;26/6158), e il Dipartimento di Famiglie, Anziani e Servizi per la Disabilità (MIN ID 26&#8209;01219 DFSDSCS 02669&#8209;2026).</p>
+        <p>Le lettere riconoscono l&rsquo;intento dell&rsquo;iniziativa, ne commendano la finalità di impiego inclusivo e indicano provider formativi accreditati, organizzazioni del settore disabilità e canali di finanziamento. Per precisione: sono corrispondenza ufficiale e indicazioni — non endorsement, nomination né impegni di finanziamento. Gli originali sono disponibili su richiesta.</p>
+      </div>
+    </section>
+
+    <section id="it-contact" aria-labelledby="it-contact-title">
+      <div class="wrap">
+        <p class="kicker">Partecipa</p>
+        <h2 id="it-contact-title">Per investitori e partner</h2>
+        <p>Stiamo raccogliendo EUR 50.000 tramite una combinazione di investimenti a impatto, grant e pre&#8209;vendite. In parallelo cerchiamo un socio operativo con base a Cebu e primi investitori d&rsquo;impatto.</p>
+        <h3>Perché collaborare con noi</h3>
+        <ul>
+          <li><strong>Una missione sociale chiara.</strong> Lavoro qualificato, indipendenza professionale e crescita di carriera per operatori non vedenti e ipovedenti.</li>
+          <li><strong>Un modello di servizio professionale.</strong> Certificazione nazionale, sicurezza del cliente e procedure di qualità documentate, non improvvisazione.</li>
+          <li><strong>Un&rsquo;opportunità di partnership locale.</strong> Lavorare con noi per validare la domanda, i requisiti normativi e la clinica pilota a Cebu.</li>
+          <li><strong>Un modello con potenziale internazionale.</strong> Se il pilota avrà successo, il playbook documentato apre la strada alla replicazione in altri paesi — potenzialmente anche in Australia.</li>
+        </ul>
+        <h3>Chi cerchiamo</h3>
+        <ul>
+          <li>Soci operativi e imprenditori locali con base a Cebu</li>
+          <li>Organizzazioni per l&rsquo;inclusione delle persone con disabilità</li>
+          <li>Professionisti qualificati del massaggio e del wellness</li>
+          <li>Investitori a impatto e fondazioni eroganti</li>
+        </ul>
+        <p>Scrivi a <a href="mailto:michelefrosi84@gmail.com">michelefrosi84@gmail.com</a> per ricevere il business plan, il modello finanziario o la corrispondenza ufficiale.</p>
+      </div>
+    </section>
+
+    <section id="it-access" aria-labelledby="it-access-title">
+      <div class="wrap">
+        <p class="kicker">Il nostro standard</p>
+        <h2 id="it-access-title">Dichiarazione di accessibilità</h2>
+        <p>La barra in cima alla pagina mette i comandi nelle tue mani: ingrandire o ridurre il testo, attivare il contrasto elevato o la modalità scura, applicare un carattere più leggibile, sottolineare tutti i link e disattivare le animazioni. Le tue scelte vengono salvate nel browser e ripristinate alla visita successiva.</p>
+        <p>Il sito è costruito per essere pienamente utilizzabile con screen reader e solo tastiera: landmark HTML semantici, ordine logico dei titoli, indicatori di focus visibili, contrasto elevato, testo ridimensionabile e nessun contenuto multimediale a riproduzione automatica. L&rsquo;accessibilità non è una caratteristica di questo progetto: è lo standard su cui è costruito l&rsquo;intero servizio.</p>
+        <p>Se qualcosa in questa pagina non ti è accessibile, scrivici: lo sistemeremo.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap footer-cols">
+      <p>&copy; 2026 Inclusive Hands Clinic — clinica pilota in sviluppo, Cebu (Filippine). Ultimo aggiornamento: novembre 2026.</p>
+      <p>Contatti: <a href="mailto:michelefrosi84@gmail.com">michelefrosi84@gmail.com</a></p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".lang-btn"));
+  var views = {
+    en: document.getElementById("content-en"),
+    it: document.getElementById("content-it")
+  };
+  var titles = {
+    en: "Inclusive Hands Clinic — Professional massage by blind therapists",
+    it: "Inclusive Hands Clinic — Massaggio professionale praticato da terapisti non vedenti"
+  };
+  var skip = document.getElementById("skip-link");
+  var status = document.getElementById("a11y-status");
+  var a11yBar = document.getElementById("a11y-bar");
+  var a11yTitle = document.getElementById("a11y-title");
+  var tools = Array.prototype.slice.call(document.querySelectorAll(".tool-btn"));
+
+  /* ---- Dizionario etichette barra accessibilità (visibili + aria-label + annunci) ---- */
+  var L = {
+    en: {
+      bar: "Accessibility tools", title: "Accessibility",
+      bigger: ["Increase text size", "A+"], smaller: ["Decrease text size", "A\u2212"],
+      contrast: ["High contrast", "Contrast"], dark: ["Dark mode", "Dark"],
+      read: ["Readable font", "Font"], links: ["Underline links", "Links"],
+      still: ["Reduce motion and animations", "Motion"], reset: ["Reset all accessibility settings", "Reset"],
+      msg: {
+        bigger: "Text enlarged.", smaller: "Text reduced.",
+        contrast: "High contrast on.", contrastOff: "High contrast off.",
+        dark: "Dark mode on.", darkOff: "Dark mode off.",
+        read: "Readable font on.", readOff: "Readable font off.",
+        links: "Links underlined.", linksOff: "Link underlining off.",
+        still: "Animations reduced.", stillOff: "Animations restored.",
+        reset: "Accessibility settings reset.", max: "Maximum text size reached.", min: "Minimum text size reached."
+      }
+    },
+    it: {
+      bar: "Strumenti di accessibilità", title: "Accessibilità",
+      bigger: ["Aumenta dimensione testo", "A+"], smaller: ["Riduci dimensione testo", "A\u2212"],
+      contrast: ["Contrasto elevato", "Contrasto"], dark: ["Modalità scura", "Scuro"],
+      read: ["Carattere leggibile", "Font"], links: ["Sottolinea i link", "Link"],
+      still: ["Riduci animazioni ed effetti", "Effetti"], reset: ["Ripristina tutte le impostazioni", "Reset"],
+      msg: {
+        bigger: "Testo ingrandito.", smaller: "Testo ridotto.",
+        contrast: "Contrasto elevato attivo.", contrastOff: "Contrasto elevato disattivato.",
+        dark: "Modalità scura attiva.", darkOff: "Modalità scura disattivata.",
+        read: "Carattere leggibile attivo.", readOff: "Carattere leggibile disattivato.",
+        links: "Link sottolineati.", linksOff: "Sottolineatura dei link disattivata.",
+        still: "Animazioni ridotte.", stillOff: "Animazioni ripristinate.",
+        reset: "Impostazioni di accessibilità ripristinate.", max: "Dimensione massima raggiunta.", min: "Dimensione minima raggiunta."
+      }
+    }
+  };
+
+  var STEPS = ["", "112.5%", "125%", "140%"];
+  var TOGGLES = ["contrast", "dark", "read", "links", "still"];
+  var state = { f: 0, contrast: false, dark: false, read: false, links: false, still: false };
+
+  try {
+    var saved = JSON.parse(localStorage.getItem("ihc-a11y") || "{}");
+    if (typeof saved.f === "number" && saved.f >= 0 && saved.f <= 3) state.f = saved.f;
+    TOGGLES.forEach(function (t) { state[t] = !!saved[t]; });
+  } catch (e) {}
+
+  function persist() {
+    try { localStorage.setItem("ihc-a11y", JSON.stringify(state)); } catch (e) {}
+  }
+  function applyFont() {
+    root.style.fontSize = STEPS[state.f];
+    persist();
+  }
+  function applyClasses() {
+    TOGGLES.forEach(function (t) {
+      root.classList.toggle("a-" + t, !!state[t]);
+      var b = tools.filter(function (x) { return x.dataset.tool === t; })[0];
+      if (b) b.setAttribute("aria-pressed", state[t] ? "true" : "false");
+    });
+    persist();
+  }
+  function say(key) {
+    var lang = currentLang;
+    if (status && L[lang] && L[lang].msg[key]) status.textContent = L[lang].msg[key];
+  }
+  function labelsFor(lang) {
+    var d = L[lang];
+    a11yBar.setAttribute("aria-label", d.bar);
+    a11yTitle.textContent = d.title;
+    tools.forEach(function (b) {
+      var pair = d[b.dataset.tool];
+      if (pair) { b.setAttribute("aria-label", pair[0]); b.setAttribute("title", pair[0]); b.textContent = pair[1]; }
+    });
+  }
+
+  tools.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.dataset.tool;
+      if (t === "bigger") {
+        if (state.f < 3) { state.f++; applyFont(); say("bigger"); } else say("max");
+      } else if (t === "smaller") {
+        if (state.f > 0) { state.f--; applyFont(); say("smaller"); } else say("min");
+      } else if (t === "reset") {
+        state = { f: 0, contrast: false, dark: false, read: false, links: false, still: false };
+        applyFont(); applyClasses(); say("reset");
+      } else {
+        state[t] = !state[t];
+        applyClasses();
+        say(state[t] ? t : t + "Off");
+      }
+    });
+  });
+
+  /* ---- Lingua ---- */
+  var currentLang = "en";
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    Object.keys(views).forEach(function (key) { views[key].hidden = (key !== lang); });
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"); });
+    document.title = titles[lang];
+    skip.setAttribute("href", "#main-" + lang);
+    labelsFor(lang);
+    try { localStorage.setItem("ihc-lang", lang); } catch (e) {}
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.dataset.lang); });
+  });
+
+  /* ---- Avvio ---- */
+  var savedLang = "en";
+  try { savedLang = localStorage.getItem("ihc-lang") || "en"; } catch (e) {}
+  setLang(savedLang === "it" ? "it" : "en");
+  applyFont();
+  applyClasses();
+})();
+</script>
+</body>
+</html>
